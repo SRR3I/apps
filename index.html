@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applications</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      z-index: 1;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      gap: 30px;
+    }
+
+    .button {
+      background-color: #008CBA;
+      border: 2px solid #00ffff;
+      color: white;
+      padding: 15px 30px;
+      font-size: 26px;
+      cursor: pointer;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    .button:hover {
+      background-color: #005f7a;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.8),
+                  0 0 40px rgba(0, 255, 255, 0.6),
+                  0 0 60px rgba(0, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 16px;
+      color: #cccccc;
+      z-index: 1;
+    }
+
+    .glow-link {
+      text-decoration: none;
+      color: #008CBA;
+      transition: text-shadow 0.3s ease, color 0.3s ease;
+    }
+
+    .glow-link:hover {
+      color: #0ff; 
+      text-shadow: 0 0 8px #0ff, 0 0 12px #0ff, 0 0 16px #0ff;
+    }
+
+    #qr-container {
+      margin-top: 20px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      z-index: 1;
+    }
+
+    #qr-container img {
+      width: 200px;
+      height: 200px;
+      border: 4px solid #00ffff;
+      border-radius: 12px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- خلفية متحركة -->
+<div id="particles-js"></div>
+
+<header>
+Applications
+</header>
+
+<main>
+  <a href="/createads" class="button">إنشاء إعلان</a>
+
+  <button class="button" onclick="showQR()">جرد المواد</button>
+
+  <div id="qr-container">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://script.google.com/macros/s/AKfycbx6J1m2eSjquIdAJyyc_7yXr8EtfllWrTaU-ypn1nXMgizLLl34qBssbFXBPexdu467fw/exec" alt="QR Code" />
+    <a href="https://script.google.com/macros/s/AKfycbx6J1m2eSjquIdAJyyc_7yXr8EtfllWrTaU-ypn1nXMgizLLl34qBssbFXBPexdu467fw/exec" target="_blank" class="button">اطلع على التطبيق</a>
+  </div>
+</main>
+
+<footer>
+ <p>© <b id="year"></b> All rights reserved by 
+  <a href="https://sari-abdulla.web.app" target="_blank" class="glow-link">Dev. Sari</a>
+</p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function showQR() {
+    document.getElementById("qr-container").style.display = 'flex';
+  }
+</script>
+
+<!-- particles.js الخلفية -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#ffffff" },
+      "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+      "opacity": { "value": 0.5, "random": false },
+      "size": { "value": 3, "random": true },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": { "enable": true, "mode": "grab" },
+        "onclick": { "enable": true, "mode": "push" }
+      },
+      "modes": {
+        "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
+</script>
+
+</body>
+</html>
